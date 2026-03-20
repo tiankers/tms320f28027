@@ -10,6 +10,9 @@
 bool key_pie = 0;
 
 interrupt void KEY_XINT1_isr(void){
+
+    motor_flag = (motor_flag) ? 0 : 1;
+
     static uint16_t aaa = 0;
     led_on(led[aaa]);
     if(aaa == 0)led_off(led[3]);

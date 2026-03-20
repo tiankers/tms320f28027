@@ -12,6 +12,7 @@ void main(void)
     io_init();
     key_init();
     motor_init();
+    hw_init();
 
     time_pie_us(myTimer0, 1000000);
     //ÖÐ¶Ï
@@ -19,9 +20,14 @@ void main(void)
 
     for(;;){
         //code begin
-        motor1(2000);
-        motor2(2000);
+        if(motor_flag){
+            motor1(1000);
+            motor2(1000);
+        }else{
+            motor1(0);
+            motor2(0);
 
+        }
 //        led_toggle(LED_R_F);
 //        delay_ms(50);
 //        if(key_down) led_on(LED_R_F);

@@ -28,6 +28,7 @@
 #include "io.h"
 #include "key.h"
 #include "motor.h"
+#include "adc_hw.h"
 
 extern CLK_Handle myClk;
 extern CPU_Handle myCpu;
