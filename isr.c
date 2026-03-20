@@ -8,22 +8,24 @@
 #include "isr.h"
 
 bool key_pie = 0;
+uint16_t led_flag = 0;
 
 interrupt void KEY_XINT1_isr(void){
-
     motor_flag = (motor_flag) ? 0 : 1;
 
-    static uint16_t aaa = 0;
-    led_on(led[aaa]);
-    if(aaa == 0)led_off(led[3]);
-    else led_off(led[aaa - 1]);
-    aaa = (aaa < 3) ? aaa + 1 : 0;
+    //static uint16_t aaa = 0;
+    //led_on(led[aaa]);
+    //if(aaa == 0)led_off(led[3]);
+    //else led_off(led[aaa - 1]);
+    //aaa = (aaa < 3) ? aaa + 1 : 0;
+
+	led_flag += (led_flag < 3) ? 1 : -3;
 
     PIE_clearInt(myPie, PIE_GroupNumber_1);
 }
 
 interrupt void timer0_isr(void){
-    led_toggle(LED_R_F);
+    //led_toggle(LED_R_F);
 
     PIE_clearInt(myPie, PIE_GroupNumber_1);
 }

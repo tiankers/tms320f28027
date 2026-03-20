@@ -13,10 +13,8 @@
 
 #define HW_EN           (GPIO_Number_34)
 
+void adc_init(void);
 void hw_init(void);
-uint16_t adc_hw_read_sensor(uint16_t index);
-void adc_hw_update_values(void);
-void adc_hw_start_all_by_sw(void);
 
 
 #endif /* USER_ADC_HW_H_ */

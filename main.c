@@ -9,6 +9,7 @@ void main(void)
     config();
 
     //用户初始化
+    adc_init();
     io_init();
     key_init();
     motor_init();
@@ -17,16 +18,47 @@ void main(void)
     time_pie_us(myTimer0, 1000000);
     //中断
     pie_init();
-
+    int16_t i;
     for(;;){
         //code begin
-        if(motor_flag){
-            motor1(1000);
-            motor2(1000);
-        }else{
-            motor1(0);
-            motor2(0);
+        switch(led_flag)
+		{
+		case 0: 
+            for (i = 0; i < 4; ++i) {
+                led_on(led[i]);
+                if (i) led_off(led[i - 1]);
+				else led_off(led[3]);
+                delay_ms(500);
+            }
+            break;
 
+		case 1: 
+            for (i = 0; i < 4; ++i) {
+                led_on(led[i]);
+            }
+            break;
+
+		case 2: 
+            for (i = 0; i < 4; ++i) {
+                led_off(led[i]);
+            }
+            break;
+
+		case 3: 
+            break;
+
+		default: 
+            break;
+
+		}
+
+
+        if(motor_flag){
+            //motor1(1000);
+            //motor2(1000);
+        }else{
+            //motor1(0);
+            //motor2(0);
         }
 //        led_toggle(LED_R_F);
 //        delay_ms(50);
