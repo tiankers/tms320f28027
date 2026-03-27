@@ -29,9 +29,9 @@ void key_even(KEY_X* key_x) {
 			break;
         case DONE:
             return;
-        default:
-            key_x->key_even = DONE;
-			break;
+//        default:
+//            key_x->key_even = DONE;
+//			break;
     }
 }
 
@@ -56,9 +56,10 @@ void key_get(KEY_X *key_x){
     }
     if (key_x->key_even == SHORT_DOWN) {
 		//如果上次按键事件是短按，并且这次按键按下的时间与上次抬起的时间间隔小于TWE_DOWN_TIME，则认为是双击事件
-        if (XY(key_x->down_ms, key_x->last_up) < TWE_DOWN_TIME && key_x->last_even == ONE_DOWN) {
+        if (XY(key_x->down_ms, key_x->last_up) < TWE_DOWN_TIME && (key_x->last_even == ONE_DOWN || key_x->last_even == SHORT_DOWN)) {
             key_x->key_even = TWO_DOWN;
-        } else {
+        } else if(XY(ms, key_x->up_ms) >= TWE_DOWN_TIME)
+        {
             key_x->key_even = ONE_DOWN;
 		}
     }

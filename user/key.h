@@ -17,8 +17,8 @@
 
 #define UP_DOWN_TIME        (50)
 #define SHORT_DOWN_TIME     (50)
-#define TWE_DOWN_TIME       (500)
-#define LONG_DOWN_TIME      (1500)
+#define TWE_DOWN_TIME       (200)
+#define LONG_DOWN_TIME      (1000)
 
 extern uint16_t gn_id;
 
