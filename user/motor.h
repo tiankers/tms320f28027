@@ -15,8 +15,6 @@
 #define LMIN1       (GPIO_Number_6)
 #define LMIN2       (GPIO_Number_7)
 
-extern bool motor_flag;
-
 void motor_init(void);
 void motor1(int32_t duty);
 void motor2(int32_t duty);

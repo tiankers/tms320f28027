@@ -76,7 +76,7 @@ void key_init(void){
 	GPIO_setQualification(myGpio, key_1, GPIO_Qual_Sample_6);//滤波，采样6次
 	GPIO_setQualificationPeriod(myGpio, key_1, 255);//采样周期为255个时钟周期（0.1~0.3ms*6）
 
-	key_pie = 1;//使能按键中断
+	//key_pie = 1;//使能按键中断
 
 	KEY_1.key_even = DONE;
 	KEY_1.down_flag = 0;

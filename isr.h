@@ -11,11 +11,12 @@
 #include "Tianker.h"
 
 extern bool key_pie;
-extern uint16_t led_flag;
 
 void pie_init(void);
-interrupt void KEY_XINT1_isr(void);
+interrupt void XINT1_isr(void);
 interrupt void timer0_isr(void);
+interrupt void timer1_isr(void);
+interrupt void timer2_isr(void);
 interrupt void pwm3(void);
 interrupt void pwm4(void);
 #endif /* ISR_H_ */

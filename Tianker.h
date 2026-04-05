@@ -31,6 +31,7 @@
 #include "key.h"
 #include "motor.h"
 #include "adc_hw.h"
+#include "csb.h"
 
 extern CLK_Handle myClk;
 extern CPU_Handle myCpu;

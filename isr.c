@@ -8,18 +8,8 @@
 #include "isr.h"
 
 bool key_pie = 0;
-uint16_t led_flag = 0;
 
-interrupt void KEY_XINT1_isr(void){
-    motor_flag = (motor_flag) ? 0 : 1;
-
-    //static uint16_t aaa = 0;
-    //led_on(led[aaa]);
-    //if(aaa == 0)led_off(led[3]);
-    //else led_off(led[aaa - 1]);
-    //aaa = (aaa < 3) ? aaa + 1 : 0;
-
-	led_flag += (led_flag < 3) ? 1 : -3;
+interrupt void XINT1_isr(void){
 
     PIE_clearInt(myPie, PIE_GroupNumber_1);
 }
@@ -39,6 +29,14 @@ interrupt void timer0_isr(void){
     a5 = ADC_readResult(myAdc, ADC_ResultNumber_0);
 
     PIE_clearInt(myPie, PIE_GroupNumber_1);
+}
+
+interrupt void timer1_isr(void) {
+    time1_us++;
+}
+
+interrupt void timer2_isr(void) {
+    time2_us++;
 }
 
 interrupt void pwm3(void){
@@ -62,9 +60,10 @@ void pie_init(void){
 		CPU_enableInt(myCpu, CPU_IntNumber_1);//使能CPU中断1（对应PIE组1）
     }
     //注册外部中断1的中断服务函数
-    PIE_registerPieIntHandler(myPie, PIE_GroupNumber_1, PIE_SubGroupNumber_4, (intVec_t)KEY_XINT1_isr);
+    PIE_registerPieIntHandler(myPie, PIE_GroupNumber_1, PIE_SubGroupNumber_4, (intVec_t)XINT1_isr);
     PIE_registerPieIntHandler(myPie, PIE_GroupNumber_1, PIE_SubGroupNumber_7, (intVec_t)timer0_isr);
-
+    PIE_registerSystemIntHandler(myPie, PIE_SystemInterrupts_TINT1, (intVec_t)timer1_isr);
+    PIE_registerSystemIntHandler(myPie, PIE_SystemInterrupts_TINT2, (intVec_t)timer2_isr);
 
 
 	CPU_enableGlobalInts(myCpu);//使能全局中断

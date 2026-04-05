@@ -10,6 +10,9 @@
 
 #include "Tianker.h"
 
+extern uint32_t time1_us;
+extern uint32_t time2_us;
+
 void timer_init(TIMER_Handle Timerx, uint32_t us);
 void time_pie_us(TIMER_Handle Timerx, uint32_t us);
 

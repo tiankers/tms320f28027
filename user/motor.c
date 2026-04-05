@@ -6,8 +6,6 @@
  */
 #include "motor.h"
 
-bool motor_flag = 0;
-
 void motor1(int32_t duty) {
 	if (duty >= 0) {
         PWM_setCmpA(myPwm3, 0);
