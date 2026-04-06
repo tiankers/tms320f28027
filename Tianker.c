@@ -10,6 +10,7 @@ CLK_Handle myClk;//    =   (CLK_Handle)0x00007010;
 CPU_Handle myCpu;//    =   (CPU_Handle)0x00000000;
 PLL_Handle myPll;//    =   (PLL_Handle)0x00007011;
 PIE_Handle myPie;//	=	(PIE_Handle)0x00000CE0;
+SCI_Handle mySci;
 ADC_Handle myAdc;
 PWM_Handle myPwm1;
 PWM_Handle myPwm2;
@@ -30,6 +31,7 @@ void config(void){
     myClk = CLK_init((void *)CLK_BASE_ADDR, sizeof(CLK_Obj));
     myGpio = GPIO_init((void *)GPIO_BASE_ADDR, sizeof(GPIO_Obj));
     myPie = PIE_init((void *)PIE_BASE_ADDR, sizeof(PIE_Obj));
+    mySci = SCI_init((void *)SCIA_BASE_ADDR, sizeof(SCI_Obj));
     myTimer0 = TIMER_init((void *)TIMER0_BASE_ADDR, sizeof(TIMER_Obj));
     myTimer1 = TIMER_init((void *)TIMER1_BASE_ADDR, sizeof(TIMER_Obj));
     myTimer2 = TIMER_init((void *)TIMER2_BASE_ADDR, sizeof(TIMER_Obj));

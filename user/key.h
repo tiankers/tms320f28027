@@ -49,6 +49,7 @@ extern KEY_X KEY_2;
 extern KEY_X KEY_3;
 
 void key_init(void);
+void get_key_down(void);
 void key_get(KEY_X *key_x);
 void key_even(KEY_X *key_x);
 

@@ -32,11 +32,13 @@
 #include "motor.h"
 #include "adc_hw.h"
 #include "csb.h"
+#include "uart.h"
 
 extern CLK_Handle myClk;
 extern CPU_Handle myCpu;
 extern PLL_Handle myPll;
 extern PIE_Handle myPie;
+extern SCI_Handle mySci;
 extern ADC_Handle myAdc;
 extern PWM_Handle myPwm1;
 extern PWM_Handle myPwm2;

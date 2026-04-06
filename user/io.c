@@ -57,7 +57,7 @@ void io_init(void){
 	led_off(LED_R_B);
 	led_off(LED_L_B);
 	led_off(LED_R_F);
-	led_off(LED_L_F);
+    led_off(LED_L_F);
 
 }
 

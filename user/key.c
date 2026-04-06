@@ -11,22 +11,40 @@ KEY_X KEY_2;
 KEY_X KEY_3;
 uint16_t gn_id = 0;
 
+void get_key_down(void){
+    KEY_1.down = key_down;
+    if (adc_val[7] < 3500 && adc_val[7] > 3300)
+        KEY_2.down = 1;
+    else if (adc_val[7] < 4070 && adc_val[7] > 4000)
+        KEY_3.down = 1;
+    else{
+        KEY_2.down = 0;
+        KEY_3.down = 0;
+    }
+}
+
 void key_even(KEY_X* key_x) {
     switch (key_x->key_even) {
         case ONE_DOWN:
             //处理单击事件
-            gn_id = 1;
-            half_flag = !half_flag;
+            if(key_x->key_num == 1){
+                gn_id = 1;
+                half_flag = !half_flag;
+            }
             key_x->key_even = DONE;
             break;
         case TWO_DOWN:
             //处理双击事件
-            gn_id = 2;
+            if(key_x->key_num == 1){
+                gn_id = 2;
+            }
             key_x->key_even = DONE;
             break;
         case LONG_DOWN:
             //
-            gn_id = 3;
+            if(key_x->key_num == 1){
+                gn_id = 3;
+            }
             key_x->key_even = DONE;
 			break;
         case DONE:
@@ -38,30 +56,6 @@ void key_even(KEY_X* key_x) {
 }
 
 void key_get(KEY_X *key_x){
-//    /* 根据按键编号明确读取对应输入，保证每次都给 key_x->down 赋值，
-//       避免保留旧值导致逻辑无法触发 */
-//    switch (key_x->key_num) {
-//        case 1:
-//            key_x->down = key_down; // GPIO 按键
-//            break;
-//        case 2:
-//            // ADC 判定（恢复注释前的阈值判断）
-//            if (adc_val[7] < 3800 && adc_val[7] > 3000)
-//                key_x->down = 1;
-//            else
-//                key_x->down = 0;
-//            break;
-//        case 3:
-//            if (adc_val[7] < 4080 && adc_val[7] > 4000)
-//                key_x->down = 1;
-//            else
-//                key_x->down = 0;
-//            break;
-//        default:
-//            /* 如果 key_num 未按预期设置，保守地读取 GPIO 状态，避免按键永远不变 */
-//            key_x->down = key_down;
-//            break;
-//    }
     if(key_x->down && !key_x->down_flag && XY(ms, key_x->up_ms) > UP_DOWN_TIME){
         key_x->down_flag = 1;
         key_x->down_ms = ms;

@@ -11,6 +11,7 @@
 #include "Tianker.h"
 
 extern bool key_pie;
+extern bool rx_pie;
 
 void pie_init(void);
 interrupt void XINT1_isr(void);
