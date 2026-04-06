@@ -51,8 +51,8 @@ void main(void)
         trig();
         echo();
 
-		tx_buf[0] = gn_id;
-		tx_byte(tx_buf, 1);
+		//tx_buf[0] = gn_id;
+		//tx_byte(tx_buf, 1);
 
         switch (gn_id) {
             case 1:

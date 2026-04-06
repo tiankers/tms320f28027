@@ -15,6 +15,7 @@ extern bool rx_pie;
 
 void pie_init(void);
 interrupt void XINT1_isr(void);
+interrupt void rx_isr(void);
 interrupt void timer0_isr(void);
 interrupt void timer1_isr(void);
 interrupt void timer2_isr(void);

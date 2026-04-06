@@ -15,6 +15,12 @@ interrupt void XINT1_isr(void){
     PIE_clearInt(myPie, PIE_GroupNumber_1);
 }
 
+interrupt void rx_isr(void) {
+    rx_byte();
+
+    PIE_clearInt(myPie, PIE_GroupNumber_9);
+}
+
 interrupt void timer0_isr(void){
     ++ms;
     static uint32_t kkk = 0;
@@ -68,9 +74,14 @@ void pie_init(void){
 		PIE_enableInt(myPie, PIE_GroupNumber_1, PIE_InterruptSource_XINT_1);//使能PIE组1的外部中断1
 		CPU_enableInt(myCpu, CPU_IntNumber_1);//使能CPU中断1（对应PIE组1）
     }
+    if (rx_pie) {
+        PIE_enableInt(myPie, PIE_GroupNumber_9, PIE_InterruptSource_SCIARX);
+        CPU_enableInt(myCpu, CPU_IntNumber_9);
+    }
     //注册外部中断1的中断服务函数
     PIE_registerPieIntHandler(myPie, PIE_GroupNumber_1, PIE_SubGroupNumber_4, (intVec_t)XINT1_isr);
     PIE_registerPieIntHandler(myPie, PIE_GroupNumber_1, PIE_SubGroupNumber_7, (intVec_t)timer0_isr);
+    PIE_registerPieIntHandler(myPie, PIE_GroupNumber_9, PIE_SubGroupNumber_1, (intVec_t)rx_isr);
     PIE_registerSystemIntHandler(myPie, PIE_SystemInterrupts_TINT1, (intVec_t)timer1_isr);
     PIE_registerSystemIntHandler(myPie, PIE_SystemInterrupts_TINT2, (intVec_t)timer2_isr);
 
