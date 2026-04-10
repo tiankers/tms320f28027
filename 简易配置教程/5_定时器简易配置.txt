@@ -1,0 +1,2 @@
+配置见time.c的timer_init函数，固定流程不赘述，仿照即可。
+最后使能TIMER_enableInt即可。

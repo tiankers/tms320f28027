@@ -1,0 +1,16 @@
+ADC模块初始化简易流程详见adc_hw.c23/28行，为固定上电与使能流程。
+
+具体的ADC检测配置有三个流程：
+	1）ADC_setSocChanNumber（检测通道与引脚绑定）：
+	    参数2：ADC_SocNumber_x(0~15),为ADC采样通道的编号，单片机有16个ADC采样通道。
+		参数3：ADC_SocChanNumber_x(A/B0~7),为ADC采样的具体引脚。
+	2）ADC_setSocSampleWindow（采样窗口设置）：
+		参数2：ADC_SocNumber_x(0~15)，为ADC采样通道的编号，单片机有16个ADC采样通道。
+		参数3：采样窗口周期数，范围为1~255，单位为ADC时钟周期。
+	3）ADC_setSocTrigSrc（触发源设置）：
+		参数2：ADC_SocNumber_x(0~15)，为ADC采样通道的编号，单片机有16个ADC采样通道。
+		参数3：ADC_SocTrigSrc_CpuTimer_x(0~2),为ADC采样触发源，单片机有3个CPU定时器可选。
+
+ADC检测值获取：
+	1）ADC_readResult（获取ADC采样结果）：
+		参数2：ADC_ResultNumber_x(0~15)，为ADC采样结果的编号，对应单片机的16个ADC采样通道。
