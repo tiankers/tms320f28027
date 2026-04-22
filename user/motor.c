@@ -71,8 +71,8 @@ void motor_init(void){
 
     CLK_enableTbClockSync(myClk);
 
-    PIE_registerPieIntHandler(myPie, PIE_GroupNumber_3, PIE_SubGroupNumber_1, &pwm3);
-    PIE_registerPieIntHandler(myPie, PIE_GroupNumber_3, PIE_SubGroupNumber_2, &pwm4);
+    PIE_registerPieIntHandler(myPie, PIE_GroupNumber_3, PIE_SubGroupNumber_3, &pwm3);
+    PIE_registerPieIntHandler(myPie, PIE_GroupNumber_3, PIE_SubGroupNumber_4, &pwm4);
 
     PWM_enableInt(myPwm3);
     PWM_enableInt(myPwm4);

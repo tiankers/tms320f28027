@@ -19,6 +19,8 @@ interrupt void rx_isr(void);
 interrupt void timer0_isr(void);
 interrupt void timer1_isr(void);
 interrupt void timer2_isr(void);
+interrupt void pwm1(void);
+interrupt void pwm2(void);
 interrupt void pwm3(void);
 interrupt void pwm4(void);
 #endif /* ISR_H_ */

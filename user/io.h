@@ -16,16 +16,19 @@
 #define LED_R_F     GPIO_Number_2
 #define LED_R_B     GPIO_Number_0
 
-#define led_on(led)			GPIO_setLow(myGpio, led)
-#define led_off(led)		GPIO_setHigh(myGpio, led)
-#define led_toggle(led)		GPIO_toggle(myGpio, led)
-
 extern GPIO_Number_e led[4];
 extern bool half_flag;
+extern bool led_mode;
+extern uint16_t HXD_BC;
 
-void io_init(void);
+void io_init(bool mode);
+void led_duty(GPIO_Number_e led, uint32_t duty);
+void led_on(GPIO_Number_e led);
+void led_off(GPIO_Number_e led);
+void led_toggle(GPIO_Number_e led);
 void all_led_on(void);
 void all_led_off(void);
 void half_led(void);
+void hxd(void);
 
 #endif /* USER_IO_H_ */

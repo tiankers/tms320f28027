@@ -6,18 +6,18 @@
  */
 #include "Tianker.h"
 
-CLK_Handle myClk;//    =   (CLK_Handle)0x00007010;
-CPU_Handle myCpu;//    =   (CPU_Handle)0x00000000;
-PLL_Handle myPll;//    =   (PLL_Handle)0x00007011;
-PIE_Handle myPie;//	=	(PIE_Handle)0x00000CE0;
+CLK_Handle myClk;//     =   (CLK_Handle)0x00007010;
+CPU_Handle myCpu;//     =   (CPU_Handle)0x00000000;
+PLL_Handle myPll;//     =   (PLL_Handle)0x00007011;
+PIE_Handle myPie;//	    =	(PIE_Handle)0x00000CE0;
 SCI_Handle mySci;
 ADC_Handle myAdc;
 PWM_Handle myPwm1;
 PWM_Handle myPwm2;
 PWM_Handle myPwm3;
 PWM_Handle myPwm4;
-WDOG_Handle myWDog;//  =   (WDOG_Handle)0x00007022;
-GPIO_Handle myGpio;//	=	(GPIO_Handle)0x00006F80;
+WDOG_Handle myWDog;//   =   (WDOG_Handle)0x00007022;
+GPIO_Handle myGpio;//   =	(GPIO_Handle)0x00006F80;
 TIMER_Handle myTimer0;
 TIMER_Handle myTimer1;
 TIMER_Handle myTimer2;

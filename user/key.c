@@ -30,6 +30,8 @@ void key_even(KEY_X* key_x) {
             if(key_x->key_num == 1){
                 gn_id = 1;
                 half_flag = !half_flag;
+            }else if(key_x->key_num == 2){
+                HXD_BC += (HXD_BC < 5) ? 1 : -4;
             }
             key_x->key_even = DONE;
             break;
@@ -37,6 +39,8 @@ void key_even(KEY_X* key_x) {
             //处理双击事件
             if(key_x->key_num == 1){
                 gn_id = 2;
+            }else if(key_x->key_num == 2){
+                gn_id = 4;
             }
             key_x->key_even = DONE;
             break;
@@ -44,6 +48,8 @@ void key_even(KEY_X* key_x) {
             //
             if(key_x->key_num == 1){
                 gn_id = 3;
+            }else if(key_x->key_num == 2){
+                gn_id = 0;
             }
             key_x->key_even = DONE;
 			break;

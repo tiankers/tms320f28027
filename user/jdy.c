@@ -12,7 +12,7 @@ void jdy_init(void) {
 	ADC_setSocSampleWindow(myAdc, ADC_SocNumber_10, ADC_SocSampleWindow_7_cycles);
 	ADC_setSocTrigSrc(myAdc, ADC_SocNumber_10, ADC_SocTrigSrc_CpuTimer_0);
 
-    GPIO_setMode(myGpio, JDY_PWRC, GPIO_0_Mode_GeneralPurpose);
+    GPIO_setMode(myGpio, JDY_PWRC, GPIO_17_Mode_GeneralPurpose);
     GPIO_setPullUp(myGpio, JDY_PWRC, GPIO_PullUp_Disable);
     GPIO_setDirection(myGpio, JDY_PWRC, GPIO_Direction_Output);
 

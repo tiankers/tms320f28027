@@ -63,8 +63,8 @@ void uart_init(void){
     GPIO_setDirection(myGpio, RX_PIN, GPIO_Direction_Input);
     GPIO_setQualification(myGpio, RX_PIN, GPIO_Qual_ASync);
 
-    SCI_setBaudRate(mySci, SCI_BaudRate_115_2_kBaud);
-//    SCI_setBaudRate(mySci, SCI_BaudRate_9_6_kBaud);
+//    SCI_setBaudRate(mySci, SCI_BaudRate_115_2_kBaud);
+    SCI_setBaudRate(mySci, SCI_BaudRate_9_6_kBaud);
 	SCI_disableParity(mySci);
 	SCI_setNumStopBits(mySci, SCI_NumStopBits_One);
 	SCI_setCharLength(mySci, SCI_CharLength_8_Bits);

@@ -27,7 +27,7 @@ interrupt void timer0_isr(void){
     if (delay_flag > 0) {
         --delay_flag;
     }
-
+    if(gn_id == 4) hxd();
     PIE_clearInt(myPie, PIE_GroupNumber_1);
 }
 
@@ -53,6 +53,16 @@ interrupt void timer2_isr(void) {
     //
 }
 
+interrupt void pwm1(void){
+
+    PWM_clearIntFlag(myPwm1); //清除PWM1的中断标志
+    PIE_clearInt(myPie, PIE_GroupNumber_3);
+}
+interrupt void pwm2(void){
+
+    PWM_clearIntFlag(myPwm2); //清除PWM2的中断标志
+    PIE_clearInt(myPie, PIE_GroupNumber_3);
+}
 interrupt void pwm3(void){
 
 	PWM_clearIntFlag(myPwm3); //清除PWM3的中断标志

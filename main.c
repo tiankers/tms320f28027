@@ -34,13 +34,14 @@ void main(void)
 
     //用户初始化
     adc_init();
-    io_init();
+    io_init(1);
     key_init();
     motor_init();
     hw_init();
     csb_init();
     uart_init();
     jdy_init();
+
     time_pie_us(myTimer0, 1000);
     time_pie_us(myTimer1, 10);
     time_pie_us(myTimer2, 10000);
@@ -52,8 +53,8 @@ void main(void)
         trig();
         echo();
 
-		//tx_buf[0] = gn_id;
-		//tx_byte(tx_buf, 1);
+//		tx_buf[0] = gn_id;
+//		tx_byte(tx_buf, 1);
 
         switch (gn_id) {
             case 1:
